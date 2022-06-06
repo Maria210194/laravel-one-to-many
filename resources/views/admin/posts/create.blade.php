@@ -29,13 +29,32 @@
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
+
+
+    <div class="form-group">
+        <label>Categoria</label>
+        <select name="category_id">
+            <option>Seleziona la categoria</option>
+            @foreach ($categories as $category)
+                <option value=" {{$category->id}}"
+                    {{$category->id == old('category_id') ? 'selected' : ''}}>
+                    {{$category->name}}
+                </option>
+            @endforeach
+        </select>
+        @error('category_id')
+            <div class="d-block invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+
+
     <div class="form-group">
         <label for="content">Contenuto</label>
 
         <textarea name="content" class="form-control @error('title') is-invalid @enderror" placeholder="Scrivi qui...">{{ old("content") }}</textarea>
 
         @error("content")
-            <div class="invalid-feedback">{{ $message }}</div>
+            <div class="d-block invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
     <div class="form-group">
