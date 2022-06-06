@@ -9,13 +9,17 @@
         <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Tutti i post</a>
     </div>
 </div>
-<div>
-    <h3>Titolo</h3>
-    <p>{{$post->title}}</p>
-    <h3>Slug</h3>
-    <p>{{$post->slug}}</p>
-    <h3>Contenuto</h3>
-    <p>{{$post->content}}</p>
+
+<dl>
+    <dt>Titolo</dt>
+    <dd>{{$post->title}}</dd>
+    <dt>Slug</dt>
+    <dd>{{$post->slug}}</dd>
+    <dt>Categoria</dt>
+    <dd>{{$category->name}}</dd>
+    <dt>Contenuto</dt>
+    <dd>{{$post->content}}</dd>
+</dl>
     <a class="btn btn-warning" href="{{ route("admin.posts.edit", $post->id) }}">Modifica</a>
     <form class="d-inline-block" action="{{route('admin.posts.destroy' ,  $post->id)}}" method="POST">
         @csrf
@@ -25,5 +29,5 @@
                 Delete
             </button>
     </form>
-</div>
+
 @endsection
